@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight, Store } from "lucide-react";
-import { PT_Sans_Caption } from "next/font/google";
-
-const ptSansCaption = PT_Sans_Caption({
-  subsets: ["latin"],
-  weight: "700",
-});
 
 export const CallToAction = () => {
   return (
@@ -16,9 +10,7 @@ export const CallToAction = () => {
           <div className="p-4 bg-cyan-300 w-fit rounded-full">
             <Store className="text-gray-100" />
           </div>
-          <h2
-            className={`${ptSansCaption.className} text-gray-100 text-balance heading-xl`}
-          >
+          <h2 className={`font-sans text-gray-100 text-balance heading-xl`}>
             Crie uma loja online e inicie suas vendas ainda hoje
           </h2>
 
