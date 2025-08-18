@@ -13,17 +13,14 @@ export const ActiveLink: React.FC<ActiveLinkProps> = ({
   ...rest
 }) => {
   const router = useRouter();
-  const isCurrentPath =
-    router.asPath === href ||
-    router.asPath === rest.as ||
-    router.asPath.startsWith(String(rest.as));
+  const isCurrentPath = router.asPath === href || router.asPath === rest.as;
 
   return (
     <Link
       href="/"
       className={cn(
-        "text-sm font-medium transition-colors hover:text-blue-500",
-        isCurrentPath ? "text-blue-50" : "text-muted-foreground"
+        "text-action-sm font-medium transition-colors hover:text-blue-500",
+        isCurrentPath ? "text-blue-200" : "text-gray-100"
       )}
     >
       {children}
