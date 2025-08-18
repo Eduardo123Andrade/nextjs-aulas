@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="flex justify-between md:flex-row gap-8 py-8">
           <Logo />
 
-          <nav className="flex flex-col md:flex-row itens-centar gap-4 text-sm">
+          <nav className="flex flex-col md:flex-row itens-centar gap-4 text-sm text-blue-100">
             <Link className="hover:text-blue-200" href="/termos-de-uso">
               Termos de uso
             </Link>
