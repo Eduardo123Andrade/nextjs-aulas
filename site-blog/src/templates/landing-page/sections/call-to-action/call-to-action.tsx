@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { ArrowRight, Store } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CreateStoreButton } from "@/templates/landing-page/create-store-button";
+import { Store } from "lucide-react";
 
 export const CallToAction = () => {
   return (
@@ -17,12 +16,7 @@ export const CallToAction = () => {
             Crie uma loja online e inicie suas vendas ainda hoje
           </h2>
 
-          <Button variant="primary" asChild className="mt-4">
-            <Link href="/criar-loja">
-              Criar loja grátis
-              <ArrowRight />
-            </Link>
-          </Button>
+          <CreateStoreButton />
         </div>
       </div>
     </section>

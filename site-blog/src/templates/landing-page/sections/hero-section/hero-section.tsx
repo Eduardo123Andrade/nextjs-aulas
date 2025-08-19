@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, Store } from "lucide-react";
+import { CreateStoreButton } from "@/templates/landing-page/create-store-button";
+import { Clock, Store } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export const HeroSection = () => {
   return (
@@ -32,12 +31,8 @@ export const HeroSection = () => {
 
             {/** Button */}
             <div className="text-white flex flex-col gap-2 mt-5 items-center md:items-start lg:items-start">
-              <Button className="rounded-full w-fit" asChild>
-                <Link href="/criar-loja">
-                  Criar loja gratis
-                  <ArrowRight />
-                </Link>
-              </Button>
+              <CreateStoreButton />
+
               <p className="text-gray-300 text-body-xs">
                 Não precisa de cartão de crédito
               </p>
