@@ -1,9 +1,7 @@
+import { ActiveLink } from "@/components/active-link";
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { useRouter } from "next/router";
-import { cn } from "@/lib/utils";
-import { ActiveLink } from "../active-link";
-import { Logo } from "../logo";
 
 export const Header = () => {
   return (

@@ -1,7 +1,5 @@
-import Image from "next/image";
+import { Logo } from "@/components/logo";
 import Link from "next/link";
-import { ActiveLink } from "../active-link";
-import { Logo } from "../logo";
 
 export const Footer = () => {
   return (
