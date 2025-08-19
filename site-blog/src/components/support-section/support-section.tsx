@@ -3,8 +3,11 @@ import { SupportCard } from "./support-card";
 
 export const SupportSection = () => {
   return (
-    <section className="container mt-8 pb-8 md:py-10 bg-gray-700">
-      <div className="flex flex-col items-center gap-12">
+    <section className="relative mt-8 pb-8 md:py-10 bg-gray-700">
+      <div className="absolute inset-0 hidden md:block bg-[url('/bg-features.svg')] bg-cover bg-center bg-no-repeat opacity-90" />
+
+
+      <div className="container relative flex flex-col items-center gap-12">
         <h2
           className={`font-sans text-balance text-center text-heading-xl text-gray-100`}
         >
