@@ -1,6 +1,14 @@
 import { Search } from "@/components/search";
+import { useRouter } from "next/router";
+
+const PAGE_TITLE = "Dicas e estratégias para impulsionar seu negócio";
 
 export default function BlogPage() {
+  const router = useRouter();
+  const query = router.query.q;
+
+  const pageTitle = query ? `Resultados de busca para: ${query}` : PAGE_TITLE;
+
   return (
     <div className="flex flex-col py-24 flex-grow h-full">
       <header className="">
@@ -14,7 +22,7 @@ export default function BlogPage() {
               className="text-balance text-start md:text-left text-heading-lg md:text-heading-xl
             max-w-2xl text-gray-100"
             >
-              Dicas e estratégias para impulsionar seu negócio
+              {pageTitle}
             </h1>
           </div>
           <Search />
