@@ -48,7 +48,7 @@ export const PostCard: React.FC<PostCardProps> = ({
             alt={title}
             width={288}
             height={144}
-            className="w-full h-40 object-cover object-center transition rounded-t-[12px]"
+            className="w-full h-40 object-cover object-center transition rounded-[8px]"
           />
         </div>
 
