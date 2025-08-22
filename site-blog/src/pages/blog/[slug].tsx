@@ -1,3 +1,4 @@
+import { Avatar } from "@/components/avatar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -52,6 +53,25 @@ export default function PostPage() {
               className="object-cover"
             />
           </figure>
+
+          <header className="p-4 md:p-6 lg:p-12 pb-0">
+            <h1 className="mb-6 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
+              {post.title}
+            </h1>
+
+            <Avatar.Container>
+              <Avatar.Image src={post.author.avatar} alt={post.title} />
+              <Avatar.Content>
+                <Avatar.Title>{post.author.name}</Avatar.Title>
+                <Avatar.Description>
+                  Publicado em{" "}
+                  <time dateTime={post.date}>
+                    {`${new Date(post.date).toLocaleDateString("pt-BR")}`}
+                  </time>
+                </Avatar.Description>
+              </Avatar.Content>
+            </Avatar.Container>
+          </header>
         </article>
       </div>
     </main>
