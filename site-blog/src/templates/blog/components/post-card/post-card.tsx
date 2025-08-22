@@ -45,7 +45,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           </div>
           <Image
             src={image}
-            alt=""
+            alt={title}
             width={288}
             height={144}
             className="w-full h-40 object-cover object-center transition rounded-t-[12px]"
