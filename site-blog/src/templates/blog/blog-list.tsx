@@ -2,6 +2,7 @@ import { Search } from "@/components/search";
 import { useRouter } from "next/router";
 import { PostCard } from "./components/post-card";
 import { PostGridCard } from "./components";
+import { allPosts } from "contentlayer/generated";
 
 const PAGE_TITLE = "Dicas e estratégias para impulsionar seu negócio";
 
@@ -10,6 +11,8 @@ export const BlogList = () => {
   const query = router.query.q;
 
   const pageTitle = query ? `Resultados de busca para: ${query}` : PAGE_TITLE;
+
+  const posts = allPosts;
 
   return (
     <div className="container flex flex-col py-24 flex-grow h-full">
@@ -32,17 +35,20 @@ export const BlogList = () => {
       </header>
 
       <PostGridCard>
-        <PostCard
-          title="Transformando seu negócio em uma loja virtual"
-          description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site..."
-          date="20/12/24"
-          image="/assets/primeiro-post.png"
-          slug=""
-          author={{
-            avatar: "/customer-01.png",
-            name: "Aspen Dokidis",
-          }}
-        />
+        {posts.map((post) => (
+          <PostCard
+            key={post._id}
+            title={post.title}
+            description={post.description}
+            date={new Date(post.date).toLocaleDateString("pt-BR")}
+            image={post.image}
+            slug={post.slug}
+            author={{
+              avatar: post.author.avatar,
+              name: post.author.name,
+            }}
+          />
+        ))}
       </PostGridCard>
     </div>
   );
