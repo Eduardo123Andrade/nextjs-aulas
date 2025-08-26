@@ -1,7 +1,8 @@
+import { Inter } from "next/font/google";
 import React from "react";
-import { Header } from "./header";
 import { Footer } from "./footer";
-import { Inter, PT_Sans_Caption } from "next/font/google";
+import { Header } from "./header";
+import { CallToAction } from "./call-to-action";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,12 +12,6 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-inter",
-});
-
-const ptSansCaption = PT_Sans_Caption({
-  subsets: ["latin"],
-  weight: "700",
-  variable: "--font-sans",
 });
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -29,6 +24,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="flex-1 flex flex-col pt-10 pb-12 bg-black">
         {children}
       </main>
+      <CallToAction />
       <Footer />
     </div>
   );
