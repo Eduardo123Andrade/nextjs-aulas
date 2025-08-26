@@ -32,7 +32,7 @@ export default function PostPage() {
   }
 
   return (
-    <main className="container flex flex-col gap-4 mt-32 text-gray-100">
+    <main className="container flex bg-gray-700 flex-col gap-4 mt-32 text-gray-100">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -94,7 +94,7 @@ export default function PostPage() {
         </article>
 
         <aside className="space-y-6">
-          <div className="rounded-lg bg-gray-700 p-4 md:p-6">
+          <div className="rounded-lg bg-gray-700">
             <h2 className="mb-4 text-heading-xs text-gray-100">Compartilhar</h2>
 
             <div className="space-y-3">
