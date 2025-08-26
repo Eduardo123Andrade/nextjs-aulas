@@ -7,17 +7,24 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { useShare } from "@/hooks";
 import { allPosts } from "contentlayer/generated";
+import { provideTracing } from "contentlayer/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function PostPage() {
   const router = useRouter();
-
   const { slug } = router.query;
-
   const post = allPosts.find((item) => item.slug.toLocaleLowerCase() === slug);
+
+  const { shareButtons } = useShare({
+    url: `http://localhost:3000/blog/${slug}`,
+    title: post?.title,
+    text: post?.description,
+  });
 
   if (!post) {
     // TODO - colocar caso para nao econtrado
@@ -85,6 +92,26 @@ export default function PostPage() {
             <Markdown content={post.body.raw} />
           </div>
         </article>
+
+        <aside className="space-y-6">
+          <div className="rounded-lg bg-gray-700 p-4 md:p-6">
+            <h2 className="mb-4 text-heading-xs text-gray-100">Compartilhar</h2>
+
+            <div className="space-y-3">
+              {shareButtons.map((provider) => (
+                <Button
+                  key={provider.provider}
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                  onClick={() => provider.action()}
+                >
+                  {provider.icon}
+                  {provider.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
     </main>
   );
