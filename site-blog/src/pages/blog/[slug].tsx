@@ -1,4 +1,5 @@
 import { Avatar } from "@/components/avatar";
+import { Markdown } from "@/components/markdown";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -54,8 +55,8 @@ export default function PostPage() {
             />
           </figure>
 
-          <header className="p-4 md:p-6 lg:p-12 pb-0">
-            <h1 className="mb-6 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
+          <header className="p-4 md:p-6 lg:p-12 pb-0 mt-8 md:mt-12">
+            <h1 className="mb-8 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
               {post.title}
             </h1>
 
@@ -72,6 +73,13 @@ export default function PostPage() {
               </Avatar.Content>
             </Avatar.Container>
           </header>
+
+          <div
+            className="prose prove-invert max-w-none px-4 mt-12 
+          md:px-6 lg:px-12"
+          >
+            <Markdown content={post.body.raw} />
+          </div>
         </article>
       </div>
     </main>
