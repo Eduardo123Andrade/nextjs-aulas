@@ -1,17 +1,34 @@
+import { cn } from "@/lib/utils";
 import Image, { ImageProps } from "next/image";
 
-interface AvatarImageProps extends ImageProps {}
+type AvatarSize = "xs" | "sm";
+
+interface AvatarImageProps extends Omit<ImageProps, "hight" | "width"> {
+  size?: AvatarSize;
+}
+
+const avatarSize = {
+  xs: "h-5 w-5",
+  sm: "h-9 w-9",
+};
 
 export const AvatarImage: React.FC<AvatarImageProps> = ({
-  width = 40,
-  height = 40,
+  size = "xs",
   ...rest
 }) => {
   return (
-    <Image
-      {...{ width, height }}
-      {...rest}
-      className="flex items-center gap-3"
-    />
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-full border-blue-200 border-[1px]",
+        avatarSize[size]
+      )}
+    >
+      <Image
+        // {...{ width, height }}
+        {...rest}
+        fill
+        className="flex items-center gap-3"
+      />
+    </div>
   );
 };
