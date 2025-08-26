@@ -1,5 +1,5 @@
 import { Search } from "@/components/search";
-import { allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 import { Inbox } from "lucide-react";
 import { useRouter } from "next/router";
 import { PostGridCard } from "./components";
@@ -7,19 +7,23 @@ import { PostCard } from "./components/post-card";
 
 const PAGE_TITLE = "Dicas e estratégias para impulsionar seu negócio";
 
-export const BlogList = () => {
+export interface BlogListProps {
+  posts: Post[];
+}
+
+export const BlogList: React.FC<BlogListProps> = ({ posts }) => {
   const router = useRouter();
   const query = router.query.q as string;
 
   const pageTitle = query ? `Resultados de busca para: ${query}` : PAGE_TITLE;
 
-  const posts = query
-    ? allPosts.filter((post) =>
+  const postList = query
+    ? posts.filter((post) =>
         post.title.toLocaleLowerCase().includes(query.toLowerCase())
       )
-    : allPosts;
+    : posts;
 
-  const hasPosts = !!posts.length;
+  const hasPosts = !!postList.length;
 
   return (
     <div className="container flex flex-col py-24 flex-grow h-full">
@@ -43,7 +47,7 @@ export const BlogList = () => {
 
       {hasPosts ? (
         <PostGridCard>
-          {posts.map((post) => (
+          {postList.map((post) => (
             <PostCard
               key={post._id}
               title={post.title}
