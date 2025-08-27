@@ -1,5 +1,8 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -12,11 +15,15 @@ export const ActiveLink: React.FC<ActiveLinkProps> = ({
   href,
   ...rest
 }) => {
-  const router = useRouter();
-  const isCurrentPath = router.asPath === href || router.asPath === rest.as;
+  const linkPath = (typeof href === "string" ? href : href.pathname) ?? "";
+  const pathname = usePathname();
+  // const router = useRouter();
+  const isCurrentPath =
+    pathname === linkPath || pathname?.startsWith(`${linkPath}/`); //router.asPath === href || router.asPath === rest.as;
 
   return (
     <Link
+      {...rest}
       href="/"
       className={cn(
         "text-action-sm font-medium transition-colors hover:text-blue-500",
