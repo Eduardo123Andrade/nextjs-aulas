@@ -1,9 +1,10 @@
+"use client";
 import { Search } from "@/components/search";
 import { Post } from "contentlayer/generated";
 import { Inbox } from "lucide-react";
-import { useRouter } from "next/router";
 import { PostGridCard } from "./components";
 import { PostCard } from "./components/post-card";
+import { useSearchParams } from "next/navigation";
 
 const PAGE_TITLE = "Dicas e estratégias para impulsionar seu negócio";
 
@@ -12,9 +13,8 @@ export interface BlogListProps {
 }
 
 export const BlogList: React.FC<BlogListProps> = ({ posts }) => {
-  const router = useRouter();
-  const query = router.query.q as string;
-
+  const searchParams = useSearchParams();
+  const query = searchParams?.get("q") ?? "";
   const pageTitle = query ? `Resultados de busca para: ${query}` : PAGE_TITLE;
 
   const postList = query

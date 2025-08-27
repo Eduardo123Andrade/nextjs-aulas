@@ -1,12 +1,20 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { isStringEmpty } from "@/utils";
 import { CircleX, SearchIcon } from "lucide-react";
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { NavigateOptions } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+
+const CONFIG: NavigateOptions = {
+  scroll: false,
+};
 
 export const Search = () => {
   const router = useRouter();
-  const query = (router.query.q as string) ?? "";
+  const searchParams = useSearchParams();
+
+  const query = searchParams?.get("q") ?? "";
 
   const handleSearch = useCallback(
     (event: React.FormEvent) => {
@@ -22,19 +30,14 @@ export const Search = () => {
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
 
-    const config = {
-      shallow: true,
-      scroll: false,
-    };
-
     if (isStringEmpty(newQuery)) {
-      return router.push("/blog", undefined, config);
+      return router.push("/blog", CONFIG);
     }
-    router.push(`/blog?q=${encodeURIComponent(newQuery)}`, undefined, config);
+    router.push(`/blog?q=${encodeURIComponent(newQuery)}`, CONFIG);
   };
 
   const resetSearch = () => {
-    router.push("/blog", undefined, { shallow: true, scroll: false });
+    router.push("/blog", CONFIG);
   };
 
   const className = cn(
