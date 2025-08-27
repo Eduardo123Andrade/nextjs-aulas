@@ -4,17 +4,25 @@ import { isStringEmpty } from "@/utils";
 import { CircleX, SearchIcon } from "lucide-react";
 import { NavigateOptions } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const CONFIG: NavigateOptions = {
   scroll: false,
 };
 
 export const Search = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const query = searchParams?.get("q") ?? "";
+  const hasQuery = searchParams?.has("q") || false;
+
+  useEffect(() => {
+    if (hasQuery) {
+      inputRef.current?.focus();
+    }
+  }, [hasQuery, inputRef]);
 
   const handleSearch = useCallback(
     (event: React.FormEvent) => {
@@ -49,6 +57,7 @@ export const Search = () => {
     <form className="relative group w-full md:w-60" onSubmit={handleSearch}>
       <SearchIcon className={className} />
       <input
+        ref={inputRef}
         type="text"
         placeholder="Buscar"
         value={query}
