@@ -1,4 +1,4 @@
-import { BlogList, BlogListProps } from "@/templates/blog";
+import { BlogList } from "@/templates/blog";
 import { allPosts } from "contentlayer/generated";
 
 export default function BlogPage() {
