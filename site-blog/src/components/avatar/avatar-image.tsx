@@ -14,6 +14,7 @@ const avatarSize = {
 
 export const AvatarImage: React.FC<AvatarImageProps> = ({
   size = "xs",
+  alt = "",
   ...rest
 }) => {
   return (
@@ -23,12 +24,7 @@ export const AvatarImage: React.FC<AvatarImageProps> = ({
         avatarSize[size]
       )}
     >
-      <Image
-        // {...{ width, height }}
-        {...rest}
-        fill
-        className="flex items-center gap-3"
-      />
+      <Image {...rest} alt={alt} fill className="flex items-center gap-3" />
     </div>
   );
 };

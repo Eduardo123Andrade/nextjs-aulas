@@ -1,11 +1,11 @@
+import { Link } from "lucide-react";
 import { useCallback, useMemo } from "react";
+import { useClipboard } from "../use-clipboard";
 import {
   ShareConfig,
   SOCIAL_PROVIDERS,
   SocialProvider,
 } from "./social-providers";
-import { useClipboard } from "../use-clipboard";
-import { Link, Link2 } from "lucide-react";
 
 interface UseShareProps extends ShareConfig {
   clipboardTimeout?: number;

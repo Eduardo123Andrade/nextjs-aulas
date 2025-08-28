@@ -6,7 +6,7 @@ interface MarkdownProps {
   className?: string;
 }
 
-export const Markdown: React.FC<MarkdownProps> = ({ content, className }) => {
+export const Markdown: React.FC<MarkdownProps> = ({ content }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}

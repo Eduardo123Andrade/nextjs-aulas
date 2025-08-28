@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 import React from "react";
 
 interface ActiveLinkProps extends LinkProps {
