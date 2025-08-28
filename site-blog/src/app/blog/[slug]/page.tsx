@@ -3,7 +3,6 @@ import { METADATA } from "@/utils";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { title } from "process";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
