@@ -24,7 +24,7 @@ export const ActiveLink: React.FC<ActiveLinkProps> = ({
   return (
     <Link
       {...rest}
-      href="/"
+      href={href}
       className={cn(
         "text-action-sm font-medium transition-colors hover:text-blue-500",
         isCurrentPath ? "text-blue-200" : "text-gray-100"
