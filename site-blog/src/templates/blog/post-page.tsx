@@ -1,5 +1,6 @@
 import { Avatar } from "@/components/avatar";
 import { Markdown } from "@/components/markdown";
+import { PostShare } from "@/components/post-share";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,8 +8,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import { useShare } from "@/hooks";
 import { Post } from "contentlayer/generated";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,12 +17,6 @@ export interface PostPageProps {
 }
 
 export default function PostPage({ post }: PostPageProps) {
-  const { shareButtons } = useShare({
-    url: `http://localhost:3000/blog/${post.slug}`,
-    title: post?.title,
-    text: post?.description,
-  });
-
   if (!post) {
     // TODO - colocar caso para nao econtrado
     return <></>;
@@ -94,27 +87,7 @@ export default function PostPage({ post }: PostPageProps) {
             </div>
           </article>
 
-          <aside className="space-y-6">
-            <div className="rounded-lg bg-gray-700">
-              <h2 className="hidden md:block mb-4 text-heading-xs text-gray-100">
-                Compartilhar
-              </h2>
-
-              <div className="flex justify-between md:flex-col gap-2">
-                {shareButtons.map((provider) => (
-                  <Button
-                    key={provider.provider}
-                    variant="outline"
-                    className="w-fit md:w-full justify-start gap-2"
-                    onClick={() => provider.action()}
-                  >
-                    {provider.icon}
-                    <span className="hidden md:block">{provider.name}</span>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </aside>
+          <PostShare post={post} />
         </div>
       </div>
     </main>
